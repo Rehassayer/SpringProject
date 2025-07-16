@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>employeelist</title>
+</head>
+<body>
+	<th:block th:insert="~{Header.html}"></th:block>
+
+	<div class="container-fluid">
+		<div class="card">
+			<div class="card-header bg-primary text-center text-white">
+				<h4>Employee List</h4>
+			</div>
+			<div class="card-body ">
+			
+			<table class = "table table-striped">
+			
+			<thead>
+			<tr>
+			<th>FirstName</th>
+			<th>LastName</th>
+			<th>Company</th>
+			<th>Phone</th>
+			<th>City</th>
+			<th>Action</th>
+			
+			</tr>
+			</thead>
+			<tbody>
+			
+			<tr th:each="emp: ${empList}">
+			<td>[[${emp.fname}]]</td>
+			<td>[[${emp.lname}]]</td>
+			<td>[[${emp.company}]]</td>
+			<td>[[${emp.phone}]]</td>
+			<td>[[${emp.address.city}]]</td>
+			
+			
+			<td>
+			
+		<a th:href="@{/emp/edit(id=${emp.id})}"><input type = "submit" value = "Edit" class = "btn btn-success btn-sm"></a>
+			<a th:href="@{/emp/delete(id=${emp.id})}"><input type = "submit" value = "Delete" class = "btn btn-danger btn-sm"></a>
+			
+			</td> 
+			</tr>
+			
+			</tbody>
+			
+			</table>
+			
+			</div>
+			<div class="card-footer bg-warning text-center text-white">
+				@copyright2025</div>
+
+		</div>
+	</div>
+	
+</body>
+</html>

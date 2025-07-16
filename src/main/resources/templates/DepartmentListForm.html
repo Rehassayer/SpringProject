@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>departmentList</title>
+<!-- Latest compiled and minified CSS -->
+
+</head>
+<body>
+<th:block th:insert="~{Header.html}"></th:block>
+
+	<div class="container-fluid">
+		<div class="card">
+			<div class="card-header bg-primary text-center text-white">
+				<h4>Department List</h4>
+			</div>
+			<div class="card-body ">
+			
+			<div>
+			
+			<a href="/dept/excel"><input type ="submit" value = "Excel" class ="btn btn-success"></a>
+			<a href ="/dept/pdf"><input type ="submit" value = "Pdf" class ="btn btn-warning"></a>
+			
+			</div>
+			
+			<table class = "table table-stripted">
+			
+			<thead>
+			<tr>
+			<th>S.N.</th>
+			<th>Department Name</th>
+			<th>Department Head(HoD)</th>
+			<th>Department Phone</th>
+			<th>Action</th>
+			
+			</tr>
+			</thead>
+			<tbody>
+			
+			<tr th:each="d, str :${dlist}">
+			<td>[[${str.count}]]</td>
+			<td>[[${d.dptName}]]</td>
+			<td>[[${d.dptHead}]]</td>
+			<td>[[${d.dptPhone}]]</td>
+			
+			<td>
+			
+			<a th:href="@{/dept/edit(id=${d.id})}"><input type = "submit" value = "Edit" class = "btn btn-success"></a>
+			<a th:href= "@{/dept/delete(id=${d.id})}"><input type = "submit" value = "Delete" class = "btn btn-danger"></a>
+			
+			</td>
+			</tr>
+			
+			</tbody>
+			
+			</table>
+			
+			</div>
+			<div class="card-footer bg-warning text-center text-white">
+				@copyright2025</div>
+
+		</div>
+	</div>
+
+</body>
+</html>
